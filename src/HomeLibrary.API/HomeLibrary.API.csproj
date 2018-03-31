@@ -146,19 +146,19 @@
     <Compile Include="v1\Controllers\BookShelfController.cs" />
     <Compile Include="v1\Controllers\BorrowerController.cs" />
     <Compile Include="v1\Controllers\UserController.cs" />
-    <Compile Include="v1\IBookCheckoutResource.cs" />
-    <Compile Include="v1\IBookOnShelfResource.cs" />
-    <Compile Include="v1\IBookResource.cs" />
-    <Compile Include="v1\IBookShelfResource.cs" />
-    <Compile Include="v1\IBorrowerResource.cs" />
+    <Compile Include="v1\Resource\IBookCheckoutResource.cs" />
+    <Compile Include="v1\Resource\IBookOnShelfResource.cs" />
+    <Compile Include="v1\Resource\IBookResource.cs" />
+    <Compile Include="v1\Resource\IBookShelfResource.cs" />
+    <Compile Include="v1\Resource\IBorrowerResource.cs" />
     <Compile Include="v1\Impl\AutoMapperProfile.cs" />
-    <Compile Include="v1\Impl\BookCheckoutResource.cs" />
-    <Compile Include="v1\Impl\BookOnShelfResource.cs" />
-    <Compile Include="v1\Impl\BookResource.cs" />
-    <Compile Include="v1\Impl\BookShelfResource.cs" />
-    <Compile Include="v1\Impl\BorrowerResource.cs" />
-    <Compile Include="v1\Impl\UserResource.cs" />
-    <Compile Include="v1\IUserResource.cs" />
+    <Compile Include="v1\Resource\Impl\BookCheckoutResource.cs" />
+    <Compile Include="v1\Resource\Impl\BookOnShelfResource.cs" />
+    <Compile Include="v1\Resource\Impl\BookResource.cs" />
+    <Compile Include="v1\Resource\Impl\BookShelfResource.cs" />
+    <Compile Include="v1\Resource\Impl\BorrowerResource.cs" />
+    <Compile Include="v1\Resource\Impl\UserResource.cs" />
+    <Compile Include="v1\Resource\IUserResource.cs" />
     <Compile Include="WorkerRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +187,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Host\Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

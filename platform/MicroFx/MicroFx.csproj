@@ -132,7 +132,6 @@
     <Compile Include="Extensibility\BaseExtensionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceNotFoundException.cs" />
-    <Compile Include="Service.cs" />
     <Compile Include="Bus\Configuration\IConfigContext.cs" />
     <Compile Include="Bus\MessageQueueAttribute.cs" />
     <Compile Include="Bus\Middleware\IBusMiddleware.cs" />

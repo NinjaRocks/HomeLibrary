@@ -12,11 +12,11 @@ namespace HomeLibrary.API
     {
         private readonly IDisposable app = null;
 
-        private readonly MicroFx.MicroService microService = null;
+        private readonly MicroService microService;
        
         
         // The name of your queue
-        const string QueueName = "homelibraryapp";
+        //const string QueueName = "homelibraryapp";
 
         // QueueClient is thread-safe. Recommended that you cache 
         // rather than recreating it on every request
@@ -25,8 +25,8 @@ namespace HomeLibrary.API
 
         public WorkerRole()
         {
-            microService = new MicroFx.MicroService(new ServiceSettings())
-                .WithStartupTask(() => new DbMigrator(new DbConnectionProvider(), new ScriptDirectoryProvider()));
+            microService = new MicroService(new ServiceSettings());
+            // .WithStartupTask(() => new DbMigrator(new DbConnectionProvider(), new ScriptDirectoryProvider()));
         }
 
         public override void Run()
@@ -35,7 +35,7 @@ namespace HomeLibrary.API
             while (true)
             {
                 Thread.Sleep(10000);
-                Trace.TraceInformation("Working", "Information");
+                Trace.TraceInformation("Working");
             }
 
 
@@ -87,7 +87,6 @@ namespace HomeLibrary.API
         public override void OnStop()
         {
             app?.Dispose();
-
             microService.Stop();
         
             // Close the connection to Service Bus Queue

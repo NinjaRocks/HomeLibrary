@@ -11,7 +11,7 @@ namespace HomeLibrary.API.Host
 
         public void ConfigureSwagger(SwaggerDocsConfig config)
         {
-            config.SingleApiVersion("v1", Service.GetName());
+            config.SingleApiVersion("v1", "HomeLibrary");
 
             logger.Debug("Swagger doc config completed ...");
         }
