@@ -1,5 +1,5 @@
-﻿USE [library]
-GO
+﻿--USE [Homelibrary]
+--GO
 DELETE FROM TBookShelf
 DELETE FROM TBookCheckout
 DELETE FROM TBorrower

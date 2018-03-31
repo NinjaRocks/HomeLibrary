@@ -22,8 +22,6 @@ namespace MicroFx.Data.Migration
         {
             logger.Info("Db migration started..");
 
-            //var path = AppDomain.CurrentDomain.BaseDirectory + @"\DbScripts";
-
             var upgrader = DeployChanges.To
                     .SqlDatabase(dbConnectionProvider.GetConnectionString())
                     .WithTransaction()

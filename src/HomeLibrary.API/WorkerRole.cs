@@ -16,17 +16,17 @@ namespace HomeLibrary.API
        
         
         // The name of your queue
-        //const string QueueName = "homelibraryapp";
+        // const string QueueName = "homelibraryapp";
 
         // QueueClient is thread-safe. Recommended that you cache 
         // rather than recreating it on every request
-        //QueueClient Client;
-        ManualResetEvent CompletedEvent = new ManualResetEvent(false);
+        // QueueClient Client;
+        // ManualResetEvent CompletedEvent = new ManualResetEvent(false);
 
         public WorkerRole()
         {
-            microService = new MicroService(new ServiceSettings());
-            // .WithStartupTask(() => new DbMigrator(new DbConnectionProvider(), new ScriptDirectoryProvider()));
+            microService = new MicroService(new ServiceSettings())
+             .WithStartupTask(() => new DbMigrator(new DbConnectionProvider(), new ScriptDirectoryProvider()));
         }
 
         public override void Run()
@@ -91,7 +91,7 @@ namespace HomeLibrary.API
         
             // Close the connection to Service Bus Queue
             // Client.Close();
-            CompletedEvent.Set();
+            // CompletedEvent.Set();
             base.OnStop();
         }
     }

@@ -8,18 +8,20 @@ namespace MicroFx.Data
 {
     public class DataAutofacModule:Module
     {
-        private Assembly callingAssembly;
+        private IDbConnectionProvider dbConnectionProvider;
 
-        public DataAutofacModule(Assembly callingAssembly)
+        public DataAutofacModule(IDbConnectionProvider dbConnectionProvider)
         {
-            this.callingAssembly = callingAssembly;
+            this.dbConnectionProvider = dbConnectionProvider;
         }
 
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(c => new TransactionInterceptor())
              .InstancePerLifetimeScope();
-          
+
+            var callingAssembly = dbConnectionProvider.GetType().Assembly;
+
             builder.RegisterAssemblyTypes(callingAssembly)
                 .Where(t => typeof(IResource).IsAssignableFrom(t) && !t.IsInterface)
                 .AsImplementedInterfaces()

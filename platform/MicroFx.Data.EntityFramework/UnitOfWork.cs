@@ -3,20 +3,24 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
-using System.Reflection;
 
 namespace MicroFx.Data.EntityFramework
 {
     public class UnitOfWork : DbContext, IQueryableUnitOfWork
     {
+        private readonly IDbConnectionProvider dbConnectionProvider;
+
         static UnitOfWork()
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<UnitOfWork>());
 
         }
 
-        public UnitOfWork(string connectionString) : base($"ConnectionString={connectionString}")
-        { }
+        public UnitOfWork(IDbConnectionProvider dbConnectionProvider) 
+            : base(dbConnectionProvider.GetConnectionString())
+        {
+            this.dbConnectionProvider = dbConnectionProvider;
+        }
 
         #region IQueryableUnitOfWork Members
 
@@ -87,7 +91,8 @@ namespace MicroFx.Data.EntityFramework
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.AddFromAssembly(Assembly.GetEntryAssembly());
+            var assembly = dbConnectionProvider.GetType().Assembly;
+            modelBuilder.Configurations.AddFromAssembly(assembly);
         }
 
         public DbTransaction CreateTransaction(IsolationLevel level)

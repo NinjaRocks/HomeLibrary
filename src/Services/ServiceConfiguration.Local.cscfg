@@ -11,7 +11,7 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://nshai01.servicebus.windows.net/;SharedAccessKeyName=HomeLibraryApp;SharedAccessKey=cAXXkaYPl1boyL9RYw0X6xMytaXk7++CXdGidTsfuDM=" />
-      <Setting name="SQL.Database.ConnectionString" value="Server=tcp:nshai.database.windows.net,1433;Initial Catalog=HomeLibrary;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" />
+      <Setting name="SQL.Database.ConnectionString" value="Server=tcp:nshai.database.windows.net,1433;Initial Catalog=HomeLibrary;Persist Security Info=False;User ID=nshai;Password=Password$1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" />
     </ConfigurationSettings>
     <Certificates>
     </Certificates>

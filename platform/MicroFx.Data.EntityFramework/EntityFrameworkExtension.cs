@@ -17,8 +17,8 @@ namespace MicroFx.Data.EntityFramework
 
         public override bool Register(IRegisterContext context)
         {
-            context.builder.RegisterModule(new DataAutofacModule(dbConnectionProvider.GetType().Assembly));
-            context.builder.RegisterModule(new EntityFrameworkAutofacModule(dbConnectionProvider.GetConnectionString()));
+            context.builder.RegisterModule(new DataAutofacModule(dbConnectionProvider));
+            context.builder.RegisterModule(new EntityFrameworkAutofacModule(dbConnectionProvider));
 
             base.Next(context);
 

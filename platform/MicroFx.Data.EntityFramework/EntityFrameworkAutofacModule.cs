@@ -4,17 +4,17 @@ namespace MicroFx.Data.EntityFramework
 {
     public class EntityFrameworkAutofacModule : Module
     {
-        private readonly string dbConnectionString;
+        private readonly IDbConnectionProvider dbConnectionProvider;
 
-        public EntityFrameworkAutofacModule(string dbConnectionString)
+        public EntityFrameworkAutofacModule(IDbConnectionProvider dbConnectionProvider)
         {
-            this.dbConnectionString = dbConnectionString;
+            this.dbConnectionProvider = dbConnectionProvider;
         }
 
         protected override void Load(ContainerBuilder builder)
         {
            builder.RegisterType(typeof(UnitOfWork))
-                .WithParameter(new NamedParameter("connectionString", dbConnectionString))
+                .WithParameter(new NamedParameter("dbConnectionProvider", dbConnectionProvider))
                 .AsImplementedInterfaces()
                 .AsSelf()
                 .InstancePerLifetimeScope();
